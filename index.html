@@ -1,0 +1,345 @@
+ None selected
+
+Skip to content
+Using Gmail with screen readers
+Enable desktop notifications for Gmail.
+   OK  No thanks
+1 of 25
+hi muskan
+Inbox
+Summarize this email
+
+muskan qadri <muskanqadri660@gmail.com>
+9:27 AM (4 minutes ago)
+to muskanqadri99@gmail.com
+
+
+
+Muskan Qadri
+9:29 AM (1 minute ago)
+to me
+
+<!DOCTYPE html>
+
+<html lang="fa" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Muskan Store</title>
+
+<style>
+
+*{box-sizing:border-box}
+
+body{margin:0;font-family:Tahoma,Arial;background:#f4f3fb;color:#24213a;transition:.3s}
+
+body.dark{background:#171625;color:#fff}
+
+header{background:linear-gradient(120deg,#342477,#7656d9);color:white;padding:30px 6%;text-align:center}
+
+header h1{font-size:34px;margin:0 0 10px}
+
+header p{margin:8px}
+
+nav{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:20px}
+
+button{border:0;border-radius:10px;padding:11px 17px;background:#6246c7;color:white;cursor:pointer;font-size:14px}
+
+button:hover{opacity:.85}
+
+nav button{background:#ffffff22;border:1px solid #ffffff55}
+
+.container{max-width:1100px;margin:25px auto;padding:0 16px}
+
+.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:20px}
+
+input,select,textarea{padding:13px;border:1px solid #ddd;border-radius:10px;font:inherit;width:100%;background:white;color:#222}
+
+#search{flex:1;min-width:220px}
+
+h2{margin-top:28px}
+
+.apps{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+
+.card{background:white;color:#25213a;border-radius:16px;padding:20px;box-shadow:0 5px 20px #34247712}
+
+.dark .card{background:#28263b;color:white}
+
+.app-icon{font-size:38px}
+
+.card h3{margin:12px 0 8px}
+
+.card p{line-height:1.8;color:#777}
+
+.dark .card p{color:#ccc}
+
+.card button{margin:5px 3px 0 0}
+
+form{display:grid;gap:12px;background:white;padding:22px;border-radius:16px;color:#222}
+
+.dark form{background:#28263b;color:white}
+
+form h2{margin-top:0}
+
+.section{margin-top:35px}
+
+.hidden{display:none!important}
+
+footer{text-align:center;padding:30px;color:#888}
+
+.small{font-size:12px;color:#888}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<h1>🌐 Muskan Store</h1>
+
+<p>خانه‌ای برای برنامه‌های کاربردی شما</p>
+
+<p>برنامه‌های مورد علاقه‌ات را پیدا کن، بررسی کن و دانلود کن.</p>
+
+<nav>
+
+<button onclick="showSection('home')">خانه</button>
+
+<button onclick="showSection('submit')">ارسال برنامه</button>
+
+<button onclick="showSection('admin')">پنل مدیریت</button>
+
+<button onclick="toggleDark()">🌙 تغییر حالت</button>
+
+</nav>
+
+</header>
+
+<main class="container">
+
+<section id="home">
+
+<div class="toolbar">
+
+<input id="search" placeholder="نام برنامه یا توضیحات را جستجو کن..." oninput="renderApps()">
+
+<select id="category" onchange="renderApps()">
+
+<option value="">همه دسته‌ها</option>
+
+<option>ابزار</option><option>سرگرمی</option><option>آموزش</option><option>بهره‌وری</option>
+
+</select>
+
+</div>
+
+<h2>⭐ برنامه‌های محبوب</h2>
+
+<div class="apps" id="appList"></div>
+
+</section>
+
+<section id="submit" class="section hidden">
+
+<form id="appForm">
+
+<h2>📤 ارسال برنامهٔ جدید</h2>
+
+<p>برنامهٔ خود را معرفی کن. پس از بررسی و تأیید مدیر منتشر می‌شود.</p>
+
+<input id="appName" placeholder="نام برنامه" required>
+
+<select id="appCategory" required>
+
+<option value="">دسته‌بندی را انتخاب کن</option>
+
+<option>ابزار</option><option>سرگرمی</option><option>آموزش</option><option>بهره‌وری</option>
+
+</select>
+
+<textarea id="appDescription" placeholder="توضیحات برنامه؛ این برنامه چه کاری انجام می‌دهد؟" required></textarea>
+
+<input id="appLink" type="url" placeholder="لینک دانلود برنامه" required>
+
+<input id="appIcon" placeholder="ایموجی برنامه، مثلاً 📱 (اختیاری)">
+
+<button type="submit">ارسال برای بررسی</button>
+
+<p class="small">ارسال برنامه به معنی انتشار فوری نیست. مدیر باید آن را تأیید کند.</p>
+
+</form>
+
+</section>
+
+<section id="admin" class="section hidden">
+
+<h2>🔐 پنل مدیریت</h2>
+
+<p>رمز آزمایشی مدیر: <b>2846</b></p>
+
+<input id="adminPassword" type="password" placeholder="رمز مدیر">
+
+<button onclick="loginAdmin()">ورود مدیر</button>
+
+<div id="adminPanel" class="hidden">
+
+<h2>برنامه‌های در انتظار بررسی</h2>
+
+<div id="pendingList"></div>
+
+</div>
+
+</section>
+
+</main>
+
+<footer>© Muskan Store — یک خانه برای برنامه‌های کاربردی شما</footer>
+
+<script>
+
+const defaults=[
+
+{name:"WhatsApp",category:"ابزار",description:"پیام‌رسانی و تماس با دوستان و خانواده.",link:"https://www.whatsapp.com/download",icon:"💬",approved:true},
+
+{name:"YouTube",category:"سرگرمی",description:"تماشای ویدیوها و محتوای مورد علاقه.",link:"https://www.youtube.com",icon:"▶️",approved:true},
+
+{name:"Duolingo",category:"آموزش",description:"یادگیری زبان با تمرین‌های سرگرم‌کننده.",link:"https://www.duolingo.com",icon:"📚",approved:true},
+
+{name:"Google Maps",category:"ابزار",description:"پیدا کردن مسیرها و مکان‌ها.",link:"https://maps.google.com",icon:"🗺️",approved:true}
+
+];
+
+let apps=JSON.parse(localStorage.getItem("muskanApps")||"null")||defaults;
+
+function save(){localStorage.setItem("muskanApps",JSON.stringify(apps))}
+
+function renderApps(){
+
+const q=document.getElementById("search").value.toLowerCase();
+
+const c=document.getElementById("category").value;
+
+const list=apps.filter(a=>a.approved&&(!c||a.category===c)&&(a.name.toLowerCase().includes(q)||a.description.toLowerCase().includes(q)));
+
+document.getElementById("appList").innerHTML=list.length?list.map(a=>`
+
+<div class="card">
+
+<div class="app-icon">${escapeHTML(a.icon||"📱")}</div>
+
+<h3>${escapeHTML(a.name)}</h3>
+
+<p>${escapeHTML(a.description)}</p>
+
+<span class="small">${escapeHTML(a.category)}</span><br>
+
+<button onclick="showDetails('${encodeURIComponent(a.name)}')">جزئیات</button>
+
+<button onclick="window.open('${safeURL(a.link)}','_blank')">دانلود</button>
+
+</div>`).join(""):"<p>برنامه‌ای پیدا نشد.</p>";
+
+}
+
+function showDetails(encoded){
+
+const a=apps.find(x=>x.name===decodeURIComponent(encoded));
+
+if(a)alert("نام: "+a.name+"\nدسته: "+a.category+"\nتوضیحات: "+a.description);
+
+}
+
+function showSection(id){
+
+["home","submit","admin"].forEach(x=>document.getElementById(x).classList.toggle("hidden",x!==id));
+
+if(id==="admin")document.getElementById("adminPanel").classList.add("hidden");
+
+}
+
+document.getElementById("appForm").addEventListener("submit",e=>{
+
+e.preventDefault();
+
+apps.push({
+
+name:document.getElementById("appName").value.trim(),
+
+category:document.getElementById("appCategory").value,
+
+description:document.getElementById("appDescription").value.trim(),
+
+link:document.getElementById("appLink").value.trim(),
+
+icon:document.getElementById("appIcon").value.trim()||"📱",
+
+approved:false
+
+});
+
+save();e.target.reset();
+
+alert("برنامه برای بررسی مدیر ارسال شد.");
+
+showSection("home");
+
+});
+
+function loginAdmin(){
+
+if(document.getElementById("adminPassword").value!=="1234"){alert("رمز اشتباه است.");return}
+
+document.getElementById("adminPanel").classList.remove("hidden");
+
+renderPending();
+
+}
+
+function renderPending(){
+
+const pending=apps.filter(a=>!a.approved);
+
+document.getElementById("pendingList").innerHTML=pending.length?pending.map(a=>`
+
+<div class="card">
+
+<h3>${escapeHTML(a.icon)} ${escapeHTML(a.name)}</h3>
+
+<p>${escapeHTML(a.description)}</p>
+
+<p>${escapeHTML(a.category)}</p>
+
+<button onclick="approveApp('${encodeURIComponent(a.name)}')">تأیید</button>
+
+<button onclick="rejectApp('${encodeURIComponent(a.name)}')">رد کردن</button>
+
+</div>`).join(""):"<p>برنامهٔ در انتظار بررسی وجود ندارد.</p>";
+
+}
+
+function approveApp(n){const a=apps.find(x=>x.name===decodeURIComponent(n)&&!x.approved);if(a){a.approved=true;save();renderPending();renderApps()}}
+
+function rejectApp(n){const i=apps.findIndex(x=>x.name===decodeURIComponent(n)&&!x.approved);if(i>=0){apps.splice(i,1);save();renderPending()}}
+
+function toggleDark(){document.body.classList.toggle("dark");localStorage.setItem("muskanDark",document.body.classList.contains("dark"))}
+
+function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+
+function safeURL(s){try{const u=new URL(s);return ["https:","http:"].includes(u.protocol)?u.href:"#"}catch{return "#"}}
+
+if(localStorage.getItem("muskanDark")==="true")document.body.classList.add("dark");
+
+renderApps();
+
+</script>
+
+</body>
+
+</html>
+
